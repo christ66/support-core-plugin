@@ -1,11 +1,12 @@
 package com.cloudbees.jenkins.support;
 
+import com.cloudbees.jenkins.support.api.Component;
 import com.cloudbees.jenkins.support.api.Container;
 import com.cloudbees.jenkins.support.api.Content;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  * User: schristou88
@@ -15,18 +16,22 @@ import java.io.OutputStream;
 public class SupportTestUtils {
 
   /**
-   * Create a container from an output stream. Test units can use this to generate a  
+   * Invoke a component, and return the component contents as a String.
    */
-  public static Container createContainerFromOutputStream(final OutputStream os) {
-    return new Container() {
-      @Override
-      public void add(@CheckForNull Content content) {
-        try {
-          content.writeTo(os);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-    };
+  public static String invokeComponentToString (final Component component) {
+    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    component.addContents(
+            new Container() {
+              @Override
+              public void add(@CheckForNull Content content) {
+                try {
+                  content.writeTo(baos);
+                } catch (IOException e) {
+                  e.printStackTrace();
+                }
+              }
+            });
+
+    return baos.toString();
   }
 }
