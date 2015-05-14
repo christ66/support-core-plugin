@@ -7,6 +7,7 @@ import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.Node;
 import hudson.remoting.Channel;
+import hudson.remoting.VirtualChannel;
 import hudson.security.Permission;
 import jenkins.model.Jenkins;
 
@@ -51,8 +52,12 @@ public class DumpExportTable extends Component {
           @Override
           protected void printTo(PrintWriter out) throws IOException {
             try {
-              if (node.getChannel() instanceof Channel) // Should never be false but just in case.
-                ((Channel)node.getChannel()).dumpExportTable(out);
+
+              VirtualChannel channel = node.getChannel();
+              if (channel instanceof Channel) // Should never be false but just in case.
+              {
+                ((Channel)channel).dumpExportTable(out);
+              }
             } catch (IOException e) {
               logger.log(Level.WARNING,
                       "Could not record environment of node " + node.getNodeName(), e);
