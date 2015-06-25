@@ -59,7 +59,7 @@ public abstract class TruncatedContent extends Content {
 
   protected abstract void printTo(PrintWriter out) throws IOException;
 
-  public class TruncatedOutputStream extends FilterOutputStream {
+  public static class TruncatedOutputStream extends FilterOutputStream {
     private final int max;
     private int currentSize;
 
