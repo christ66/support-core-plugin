@@ -3,6 +3,7 @@ package com.cloudbees.jenkins.support.impl;
 import com.cloudbees.jenkins.support.api.Component;
 import com.cloudbees.jenkins.support.api.Container;
 import com.cloudbees.jenkins.support.api.PrintedContent;
+import com.cloudbees.jenkins.support.api.TruncatedContent;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.Node;
@@ -48,7 +49,7 @@ public class DumpExportTable extends Component {
   public void addContents(@NonNull Container result) {
     for (final Node node : Jenkins.getInstance().getNodes()) {
       result.add(
-        new PrintedContent("nodes/slave/" + node.getNodeName() + "/exportTable.txt") {
+        new TruncatedContent("nodes/slave/" + node.getNodeName() + "/exportTable.txt") {
           @Override
           protected void printTo(PrintWriter out) throws IOException {
             try {
