@@ -281,7 +281,7 @@ public class SupportPlugin extends Plugin {
         manifest.append(StringUtils.repeat("=", bundleName.length())).append('\n');
         manifest.append("\n");
         manifest.append("Generated on ")
-                .append(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss Z").format(new Date()))
+                .append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ").format(new Date()))
                 .append("\n");
         manifest.append("\n");
         manifest.append("Requested components:\n\n");
@@ -336,7 +336,9 @@ public class SupportPlugin extends Plugin {
                     }
                     final String name = c.getName();
                     try {
-                        zip.putNextEntry(new ZipEntry(name));
+                        ZipEntry entry = new ZipEntry(name);
+                        entry.setTime(c.getTime());
+                        zip.putNextEntry(entry);
                         c.writeTo(bos);
                     } catch (Throwable e) {
                         LogRecord logRecord =
@@ -379,7 +381,9 @@ public class SupportPlugin extends Plugin {
 
     @Initializer(after = InitMilestone.EXTENSIONS_AUGMENTED, before = InitMilestone.JOB_LOADED)
     public static void loadConfig() throws IOException {
-        getInstance().load();
+        SupportPlugin instance = getInstance();
+        if (instance != null)
+            instance.load();
     }
 
     @Override
