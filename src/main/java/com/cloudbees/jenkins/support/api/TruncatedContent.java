@@ -25,10 +25,7 @@ package com.cloudbees.jenkins.support.api;
 
 import com.cloudbees.jenkins.support.timer.FileListCapComponent;
 
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 
 /**
  * Content added to the support bundle that should be truncated.
@@ -49,7 +46,7 @@ public abstract class TruncatedContent extends Content {
 
   @Override
   public void writeTo(OutputStream os) throws IOException {
-    PrintWriter out = new PrintWriter(new TruncatedOutputStream(os, maxSize));
+    PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new TruncatedOutputStream(os, maxSize), "UTF-8")));
     try {
       printTo(out);
     } finally {
