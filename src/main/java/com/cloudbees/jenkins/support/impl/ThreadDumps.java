@@ -183,6 +183,7 @@ public class ThreadDumps extends Component {
      * Dumps all of the threads' current information to an output stream.
      *
      * @param out an output stream
+     * @throws UnsupportedEncodingException If the named encoding is not supported.
      */
     public static void threadDump(OutputStream out) throws UnsupportedEncodingException {
         try {
@@ -197,6 +198,7 @@ public class ThreadDumps extends Component {
      * Dumps all of the threads' current information to an output stream.
      *
      * @param out an output stream
+     * @throws UnsupportedEncodingException If the named encoding is not supported.
      */
     @IgnoreJRERequirement
     @edu.umd.cs.findbugs.annotations.SuppressWarnings(
@@ -311,6 +313,7 @@ public class ThreadDumps extends Component {
      * Dumps all of the threads' current information to an output stream.
      *
      * @param out an output stream
+     * @throws UnsupportedEncodingException If the named encoding is not supported.
      */
     @edu.umd.cs.findbugs.annotations.SuppressWarnings(
             value = {"VA_FORMAT_STRING_USES_NEWLINE"},

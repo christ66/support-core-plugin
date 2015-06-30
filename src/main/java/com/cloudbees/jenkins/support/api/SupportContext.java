@@ -27,6 +27,7 @@ package com.cloudbees.jenkins.support.api;
 
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.health.HealthCheckRegistry;
+import jenkins.metrics.api.Metrics;
 
 /**
  * The context that a {@link Component} is being instantiated in.
@@ -35,13 +36,13 @@ import com.codahale.metrics.health.HealthCheckRegistry;
  */
 public interface SupportContext {
     /**
-     * @deprecated use {@link com.codahale.metrics.jenkins.Metrics#metricRegistry()}
+     * @deprecated  use {@link Metrics#metricRegistry()}
      */
     @Deprecated
     MetricRegistry getMetricsRegistry();
 
     /**
-     * @deprecated use {@link com.codahale.metrics.jenkins.Metrics#healthCheckRegistry()}
+     * @deprecated use {@link Metrics#healthCheckRegistry()}
      */
     @Deprecated
     HealthCheckRegistry getHealthCheckRegistry();

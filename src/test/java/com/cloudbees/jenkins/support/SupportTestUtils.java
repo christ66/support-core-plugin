@@ -17,6 +17,10 @@ public class SupportTestUtils {
 
   /**
    * Invoke a component, and return the component contents as a String.
+   *
+   * @param component Component to invoke.
+   *
+   * @return String String value of the contents from the component.
    */
   public static String invokeComponentToString (final Component component) {
     final ByteArrayOutputStream baos = new ByteArrayOutputStream();

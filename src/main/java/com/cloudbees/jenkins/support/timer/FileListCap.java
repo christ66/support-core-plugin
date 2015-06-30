@@ -77,6 +77,10 @@ public class FileListCap {
 
     /**
      * Creates a new file object in this directory without changing the
+     *
+     * @param path Path inside of folder.
+     *
+     * @return File Location of file including the folder location.
      */
     public File file(String path) {
         return new File(folder,path);

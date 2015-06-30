@@ -43,6 +43,8 @@ public class SupportActionTest extends Assert {
      * If any warning is reported to j.u.l logger, treat that as a sign of failure, because
      * support-core plugin works darn hard to try to generate something in the presence of failing
      * {@link Component} impls.
+     *
+     * @throws Exception Unit test failure.
      */
     @Test
     public void takeSnapshotAndMakeSureSomethingHappens() throws Exception {

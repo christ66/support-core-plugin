@@ -168,6 +168,8 @@ public class SupportPlugin extends Plugin {
 
     /**
      * Working directory that the support-core plugin uses to write out files.
+     *
+     * @return File Root directory where the support-core plugin writes files to.
      */
     public static File getRootDirectory() {
         return new File(Jenkins.getInstance().getRootDir(), SUPPORT_DIRECTORY_NAME);

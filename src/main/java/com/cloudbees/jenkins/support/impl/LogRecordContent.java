@@ -25,6 +25,8 @@ public abstract class LogRecordContent extends PrintedContent {
      * Iterates {@link LogRecord}s to be printed as this content.
      *
      * @see Lists#reverse(List)
+     * @return Iterable Log records.
+     * @throws IOException Log records took too long to obtain or there was an error reading the log records.
      */
     public abstract Iterable<LogRecord> getLogRecords() throws IOException;
 
